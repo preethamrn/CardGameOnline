@@ -501,7 +501,7 @@ PlayerSettings:
   XboxOne::VR::enabledDevices: []
   iOS::VR::enabledDevices: []
   tvOS::VR::enabledDevices: []
-  cloudProjectId: 68f9bfaa-27a8-4535-a213-c547ca8cce91
+  cloudProjectId: f823f3d0-98b3-4697-a350-067f04178b83
   projectName: CardGameOnline
-  organizationId: zazzah
+  organizationId: coxif
   cloudEnabled: 0
