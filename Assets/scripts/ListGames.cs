@@ -7,7 +7,9 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ListGames : MonoBehaviour
 {
@@ -22,7 +24,13 @@ public class ListGames : MonoBehaviour
     {
         int i = 0;
         foreach (string dir in directories) {
-            GUI.Label(new Rect(0, 10*i, 1000, 100), dir);
+            //string game = Regex.Match(dir, @"([^\]*)", RegexOptions.RightToLeft).Value;
+            string game = dir;
+            if (GUI.Button(new Rect(0, 30 * i, 1000, 30), game))
+            {
+                ApplicationModel.gameName = game;
+                SceneManager.LoadScene("table");
+            }
             i++;
         }
     }
