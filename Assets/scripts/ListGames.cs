@@ -1,4 +1,9 @@
-﻿using System;
+﻿//TODO:
+//Scroll bar in case games exceed screen space (either width or height)
+//Make text prettier
+//Select game and move to table scene (then load cards on start)
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
