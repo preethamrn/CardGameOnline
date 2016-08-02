@@ -24,11 +24,11 @@ public class ListGames : MonoBehaviour
     {
         int i = 0;
         foreach (string dir in directories) {
-            //string game = Regex.Match(dir, @"([^\]*)", RegexOptions.RightToLeft).Value;
-            string game = dir;
-            if (GUI.Button(new Rect(0, 30 * i, 1000, 30), game))
+            string game = Regex.Match(dir, @"([^\\]*)", RegexOptions.RightToLeft).Value;
+            if (GUI.Button(new Rect(0, 30 * i, 1000, 30), game, GUI.skin.box))
             {
                 ApplicationModel.gameName = game;
+                ApplicationModel.gameDir = dir;
                 SceneManager.LoadScene("table");
             }
             i++;
