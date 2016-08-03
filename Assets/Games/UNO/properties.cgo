@@ -1,14 +1,17 @@
-group: red_cards {
+deck: red_cards {
 	cards: [0r_1.png, 1r_1.png],
-	back: back.png
+	back: back.png,
+	size: 10
 }
 
-group: yellow_cards {
+deck: yellow_cards {
 	cards: [draw2y_1.png],
-	back: back.png
+	back: back.png,
+	size: 10
 }
 
-group: wild_cards {
+deck: wild_cards {
 	cards: [draw4_1.png],
-	back: back.png
+	back: back.png,
+	size: 10
 }
