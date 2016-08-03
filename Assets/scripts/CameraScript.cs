@@ -7,11 +7,11 @@ public class CameraScript : MonoBehaviour
     private Camera myCamera;
     private RaycastHit hit;
     private float liftHeight = -3.0f;
-    private int cardSortingOrder = 0;
+    private static int cardSortingOrder = 0;
 
     void Start()
     {
-        myCamera = GetComponent<Camera>(); 
+        myCamera = GetComponent<Camera>();
     }
 
     void Update()
@@ -24,13 +24,13 @@ public class CameraScript : MonoBehaviour
             {
                 if (hit.transform.tag == "Card")
                 {
-                	hit.transform.gameObject.GetComponent<SpriteRenderer>().sortingOrder = cardSortingOrder++;
+                    hit.transform.gameObject.GetComponent<SpriteRenderer>().sortingOrder = cardSortingOrder++;
                     Debug.Log("Clicked a card", hit.transform.gameObject);
                 }
             }
-            
+
         }
-        
+
         if (Input.GetButtonDown("Fire2")) //Right Clicks
         {
             Ray ray = myCamera.ScreenPointToRay(Input.mousePosition);
@@ -44,11 +44,8 @@ public class CameraScript : MonoBehaviour
                 if (hit.transform.tag == "Background")
                 {
                     Debug.Log("Spawned a card", hit.transform.gameObject);
-                    GameObject newCard = Instantiate(Resources.Load("card"), new Vector3(mousePos.x, mousePos.y, liftHeight), Quaternion.identity) as GameObject;
-                    
-                    SpriteRenderer spriteRenderer = newCard.GetComponent<SpriteRenderer>();
-                    spriteRenderer.sortingOrder = cardSortingOrder++;
-                    
+                    addCard(mousePos);
+
                     //Do anything you want with the new card, like load its graphics or something
                     //Probably want to define the functions in CardActions, but anywhere is fine
                     //newCard.GetComponent<CardActions>().FlipTable();
@@ -56,7 +53,7 @@ public class CameraScript : MonoBehaviour
             }
 
         }
-        
+
         if (Input.GetButton("Fire1"))
         {
             //Debug.Log("Dragging1", hit.transform.gameObject);
@@ -71,10 +68,18 @@ public class CameraScript : MonoBehaviour
                 }
             }
         }
-        
+
         if (Input.GetButtonUp("Fire1"))
         {
             hit = new RaycastHit();
         }
+    }
+
+    public static void addCard(Vector2 pos, Sprite sprite = null) {
+        GameObject newCard = Instantiate(Resources.Load("card"), new Vector2(pos.x, pos.y), Quaternion.identity) as GameObject;
+
+        SpriteRenderer spriteRenderer = newCard.GetComponent<SpriteRenderer>();
+        spriteRenderer.sortingOrder = cardSortingOrder++;
+        if(sprite != null) spriteRenderer.sprite = sprite;
     }
 }

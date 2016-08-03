@@ -1,11 +1,12 @@
 TODO:
 
 drag-n-drop: 
+	!!Make cards 2D
 	✓Card priority. When card is clicked, bring it to front of all other cards.
-	-Fix sorting order overflow issue (when > 32767 it becomes max)
 	-Card goes off screen (limit Card movement to screen)
 	-Don't snap center of card to pointer when clicked.
 	-Solid border around card when hover/click/in_hand/on_table/etc...
+	-Fix sorting order overflow issue (when > 32767 bring card to front stops working)
 
 base-function:
 	-Add Hand
@@ -13,5 +14,6 @@ base-function:
 	-
 
 cgo-parser:
-	-Differentiate between Deck/CardGroup/Card
-	-Get the card assets and instantiate
+	✓Get the card assets and instantiate
+	-Fix the object center when it is loaded (centered at bottom left corner. Why?)
+	-Differentiate between Deck/CardGroup/Card/Token
