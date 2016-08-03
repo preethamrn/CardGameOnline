@@ -3,40 +3,34 @@ using System.Collections;
 
 public class CameraScript : MonoBehaviour
 {
-
-    private Camera myCamera;
-    private RaycastHit hit;
-    private float liftHeight = -3.0f;
+    private RaycastHit2D hit;
 
     private int cardSortingOrder = 0;
 
     void Start()
     {
-        myCamera = GetComponent<Camera>(); 
+
     }
 
     void Update()
     {
-        Vector2 mousePos = myCamera.ScreenToWorldPoint(Input.mousePosition);
-        if (Input.GetButtonDown("Fire1")) //Left Clicks
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        hit = Physics2D.Raycast(mousePos, Vector2.zero); //constant raycasting
+        if (hit.collider != null)
         {
-            Ray ray = myCamera.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out hit))
+            if (Input.GetButtonDown("Fire1")) //Left Clicks
             {
                 if (hit.transform.tag == "Card")
                 {
                     hit.transform.gameObject.GetComponent<SpriteRenderer>().sortingOrder = cardSortingOrder++;
                     Debug.Log("Clicked a card", hit.transform.gameObject);
                 }
+
             }
-            
-        }
-        
-        if (Input.GetButtonDown("Fire2")) //Right Clicks
-        {
-            Ray ray = myCamera.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out hit))
+
+            if (Input.GetButtonDown("Fire2")) //Right Clicks
             {
+
                 if (hit.transform.tag == "Card")
                 {
                     Debug.Log("TableFlipped a card", hit.transform.gameObject);
@@ -45,7 +39,7 @@ public class CameraScript : MonoBehaviour
                 if (hit.transform.tag == "Background")
                 {
                     Debug.Log("Spawned a card", hit.transform.gameObject);
-                    GameObject newCard = Instantiate(Resources.Load("card"), new Vector3(mousePos.x, mousePos.y, liftHeight), Quaternion.identity) as GameObject;
+                    GameObject newCard = Instantiate(Resources.Load("card"), new Vector3(mousePos.x, mousePos.y, hit.transform.position.z), Quaternion.identity) as GameObject;
 
                     SpriteRenderer spriteRenderer = newCard.GetComponent<SpriteRenderer>();
                     spriteRenderer.sortingOrder = cardSortingOrder++;
@@ -53,28 +47,27 @@ public class CameraScript : MonoBehaviour
                     //Probably want to define the functions in CardActions, but anywhere is fine
                     //newCard.GetComponent<CardActions>().FlipTable();
                 }
+
             }
 
-        }
-        
-        if (Input.GetButton("Fire1"))
-        {
-            //Debug.Log("Dragging1", hit.transform.gameObject);
-            if (hit.collider != null)
+            if (Input.GetButton("Fire1"))
             {
-                //Debug.Log("Dragging2", hit.transform.gameObject);
+                //Debug.Log("Dragging1", hit.transform.gameObject);
+
+                Debug.Log("Dragging2", hit.transform.gameObject);
                 if (hit.transform.tag == "Card")
                 {
-                    //Debug.Log("Dragging3", hit.transform.gameObject);
-                    hit.transform.position = new Vector3(mousePos.x, mousePos.y, liftHeight);
+                    Debug.Log("Dragging3", hit.transform.gameObject);
+                    hit.transform.position = mousePos;
                     hit.transform.rotation = Quaternion.identity;
                 }
+
             }
-        }
-        
-        if (Input.GetButtonUp("Fire1"))
-        {
-            hit = new RaycastHit();
+
+            if (Input.GetButtonUp("Fire1"))
+            {
+                hit = new RaycastHit2D();
+            }
         }
     }
 }
