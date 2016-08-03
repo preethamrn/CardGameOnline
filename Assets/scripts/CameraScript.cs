@@ -8,6 +8,8 @@ public class CameraScript : MonoBehaviour
     private RaycastHit hit;
     private float liftHeight = -3.0f;
 
+    private int cardSortingOrder = 0;
+
     void Start()
     {
         myCamera = GetComponent<Camera>(); 
@@ -23,6 +25,7 @@ public class CameraScript : MonoBehaviour
             {
                 if (hit.transform.tag == "Card")
                 {
+                    hit.transform.gameObject.GetComponent<SpriteRenderer>().sortingOrder = cardSortingOrder++;
                     Debug.Log("Clicked a card", hit.transform.gameObject);
                 }
             }
@@ -44,6 +47,8 @@ public class CameraScript : MonoBehaviour
                     Debug.Log("Spawned a card", hit.transform.gameObject);
                     GameObject newCard = Instantiate(Resources.Load("card"), new Vector3(mousePos.x, mousePos.y, liftHeight), Quaternion.identity) as GameObject;
 
+                    SpriteRenderer spriteRenderer = newCard.GetComponent<SpriteRenderer>();
+                    spriteRenderer.sortingOrder = cardSortingOrder++;
                     //Do anything you want with the new card, like load its graphics or something
                     //Probably want to define the functions in CardActions, but anywhere is fine
                     //newCard.GetComponent<CardActions>().FlipTable();
