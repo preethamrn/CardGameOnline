@@ -28,7 +28,7 @@ public class CameraScript : MonoBehaviour
             }
             
         }
-        /*
+        
         if (Input.GetButtonDown("Fire2")) //Right Clicks
         {
             Ray ray = myCamera.ScreenPointToRay(Input.mousePosition);
@@ -39,19 +39,28 @@ public class CameraScript : MonoBehaviour
                     Debug.Log("TableFlipped a card", hit.transform.gameObject);
                     hit.collider.gameObject.GetComponent<CardActions>().FlipTable();
                 }
+                if (hit.transform.tag == "Background")
+                {
+                    Debug.Log("Spawned a card", hit.transform.gameObject);
+                    GameObject newCard = Instantiate(Resources.Load("card"), new Vector3(mousePos.x, mousePos.y, liftHeight), Quaternion.identity) as GameObject;
+
+                    //Do anything you want with the new card, like load its graphics or something
+                    //Probably want to define the functions in CardActions, but anywhere is fine
+                    //newCard.GetComponent<CardActions>().FlipTable();
+                }
             }
 
         }
-        */
+        
         if (Input.GetButton("Fire1"))
         {
-            Debug.Log("Dragging1", hit.transform.gameObject);
+            //Debug.Log("Dragging1", hit.transform.gameObject);
             if (hit.collider != null)
             {
-                Debug.Log("Dragging2", hit.transform.gameObject);
+                //Debug.Log("Dragging2", hit.transform.gameObject);
                 if (hit.transform.tag == "Card")
                 {
-                    Debug.Log("Dragging3", hit.transform.gameObject);
+                    //Debug.Log("Dragging3", hit.transform.gameObject);
                     hit.transform.position = new Vector3(mousePos.x, mousePos.y, liftHeight);
                     hit.transform.rotation = Quaternion.identity;
                 }
