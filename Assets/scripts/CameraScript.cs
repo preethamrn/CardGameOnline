@@ -4,51 +4,63 @@ using System.Collections;
 public class CameraScript : MonoBehaviour
 {
 
-    private Camera myCamera; //For storing the camera
-    private RaycastHit2D puzzlePiece; //For storing the puzzle piece we are dragging
+    private Camera myCamera;
+    private RaycastHit hit;
+    private float liftHeight = -3.0f;
 
     void Start()
     {
-        myCamera = GetComponent<Camera>(); //For getting the camera
+        myCamera = GetComponent<Camera>(); 
     }
 
     void Update()
     {
-
-        //Store our mouse position at the beginning of the frame for use later
         Vector2 mousePos = myCamera.ScreenToWorldPoint(Input.mousePosition);
-
-        //Did we mouse click? "Fire1" is set to use Mouse0 in Edit > Project Settings > Input Manager
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1")) //Left Clicks
         {
-
-            //Shoot a ray at the exact position of our mouse, and store the returned result into puzzlePiece
-            puzzlePiece = Physics2D.Raycast(mousePos, Vector2.zero);
+            Ray ray = myCamera.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out hit))
+            {
+                if (hit.transform.tag == "Card")
+                {
+                    Debug.Log("Clicked a card", hit.transform.gameObject);
+                }
+            }
+            
         }
+        /*
+        if (Input.GetButtonDown("Fire2")) //Right Clicks
+        {
+            Ray ray = myCamera.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out hit))
+            {
+                if (hit.transform.tag == "Card")
+                {
+                    Debug.Log("TableFlipped a card", hit.transform.gameObject);
+                    hit.collider.gameObject.GetComponent<CardActions>().FlipTable();
+                }
+            }
 
-        //Are we holding the mouse button down?
+        }
+        */
         if (Input.GetButton("Fire1"))
         {
-
-            //Is the collider of our puzzlePiece RaycastHit2D variable NOT null?
-            if (puzzlePiece.collider != null)
+            Debug.Log("Dragging1", hit.transform.gameObject);
+            if (hit.collider != null)
             {
-
-                //Set the position of our puzzlePiece to be equal to our mouse position
-                puzzlePiece.collider.transform.position = mousePos;
-
-                //Optional: If using Z-Axis to determine sprite render order, use these lines instead
-                //Transform puzzTrans = puzzlePiece.collider.transform;
-                //puzzTrans.position = new Vector3(mousePos.x, mousePos.y, puzzTrans.position.z);
+                Debug.Log("Dragging2", hit.transform.gameObject);
+                if (hit.transform.tag == "Card")
+                {
+                    Debug.Log("Dragging3", hit.transform.gameObject);
+                    hit.transform.position = new Vector3(mousePos.x, mousePos.y, liftHeight);
+                    hit.transform.rotation = Quaternion.identity;
+                }
             }
         }
-
-        //Did we let go of the mouse button?
+        
         if (Input.GetButtonUp("Fire1"))
         {
-
-            //Reset the puzzlePiece to null
-            puzzlePiece = new RaycastHit2D();
+            hit = new RaycastHit();
         }
     }
 }
