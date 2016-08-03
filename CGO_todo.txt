@@ -1,0 +1,16 @@
+TODO:
+
+drag-n-drop: 
+	✓Card priority. When card is clicked, bring it to front of all other cards.
+	-Card goes off screen (limit Card movement to screen)
+	-Don't snap center of card to pointer when clicked.
+	-Solid border around card when hover/click/in_hand/on_table/etc...
+
+base-function:
+	-Add Hand
+	-Add functionality for Decks (draw, shuffle)
+	-
+
+cgo-parser:
+	-Differentiate between Deck/CardGroup/Card
+	-Get the card assets and instantiate
