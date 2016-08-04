@@ -3,8 +3,6 @@ using System.Collections;
 
 public class DynamicObject : MonoBehaviour {
 
-    // Use this for initialization
-    private Color originalColor;
 	void Start () {
         
     }
@@ -24,14 +22,22 @@ public class DynamicObject : MonoBehaviour {
 
     void OnMouseEnter()
     {
-        Renderer r = GetComponent<Renderer>();
-        originalColor = r.material.color;
-        r.material.color = Color.green;
+        GetComponent<Renderer>().material.color = Color.green;
     }
 
     void OnMouseExit()
     {
-        GetComponent<Renderer>().material.color = originalColor;
+        GetComponent<Renderer>().material.color = Color.white;
+    }
+
+    public void Select()
+    {
+        GetComponent<Renderer>().material.color = Color.red;
+    }
+
+    public void Unselect()
+    {
+        GetComponent<Renderer>().material.color = Color.green;
     }
     
 }
