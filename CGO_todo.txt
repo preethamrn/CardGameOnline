@@ -15,5 +15,7 @@ base-function:
 
 cgo-parser:
 	✓Get the card assets and instantiate
-	-Fix the object center when it is loaded (centered at bottom left corner. Why?)
+	✓Fix the object center when it is loaded (centered at bottom left corner) => change pivot
+	-Card sprite becomes invisible when pivot is set (other than Vector.zero)
+	-Cards go to wrong layer and occasionally have sorting order issues (investigate)
 	-Differentiate between Deck/CardGroup/Card/Token
