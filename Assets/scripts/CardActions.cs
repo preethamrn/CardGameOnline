@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CardActions : DynamicObject {
+public class CardActions : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {

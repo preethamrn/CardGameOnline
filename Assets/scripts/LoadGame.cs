@@ -26,7 +26,7 @@ public class LoadGame : MonoBehaviour {
             yield return www;
             Texture2D texTmp = new Texture2D(1024, 1024, TextureFormat.DXT1, false);
             www.LoadImageIntoTexture(texTmp);
-            CameraScript.addCard(Vector2.zero, Sprite.Create(texTmp, new Rect(0,0,texTmp.width,texTmp.height), new Vector2(texTmp.width / 2, texTmp.height / 2)));
+            CameraScript.addCard(Vector2.zero, Sprite.Create(texTmp, new Rect(0,0,texTmp.width,texTmp.height), new Vector2(0.5f, 0.5f)));
         }
 
     }

@@ -1,8 +1,9 @@
 TODO:
 
 drag-n-drop: 
-	!!Make cards 2D
+	✓Make cards 2D
 	✓Card priority. When card is clicked, bring it to front of all other cards.
+	-NullPointerReferences when selected is null but try to get selected.tag/etc. (ie. dragging background gives lots of errors)
 	-Card goes off screen (limit Card movement to screen)
 	-Don't snap center of card to pointer when clicked.
 	-Solid border around card when hover/click/in_hand/on_table/etc...
@@ -16,6 +17,7 @@ base-function:
 cgo-parser:
 	✓Get the card assets and instantiate
 	✓Fix the object center when it is loaded (centered at bottom left corner) => change pivot
-	-Card sprite becomes invisible when pivot is set (other than Vector.zero)
-	-Cards go to wrong layer and occasionally have sorting order issues (investigate)
+	✓Card sprite becomes invisible when pivot is set (other than Vector.zero)
+	?Cards go to wrong layer and occasionally have sorting order issues (investigate) => fixed because switched to 2D???
+	-Cards aren't being Instantiated
 	-Differentiate between Deck/CardGroup/Card/Token
