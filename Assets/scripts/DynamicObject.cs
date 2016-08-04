@@ -3,7 +3,8 @@ using System.Collections;
 
 public class DynamicObject : MonoBehaviour {
 
-	// Use this for initialization
+    // Use this for initialization
+    private Color originalColor;
 	void Start () {
         
     }
@@ -19,6 +20,18 @@ public class DynamicObject : MonoBehaviour {
         Debug.Log("Flipping!", this);
         Random.InitState(Mathf.RoundToInt(this.transform.position.x * 100) + Mathf.RoundToInt(this.transform.position.y * 100) + Mathf.RoundToInt(this.transform.position.z * 100));
         GetComponent<Rigidbody>().AddExplosionForce(500.0f, transform.position - new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), -1.0f), 3.0f, 0.0f, ForceMode.Acceleration);
+    }
+
+    void OnMouseEnter()
+    {
+        Renderer r = GetComponent<Renderer>();
+        originalColor = r.material.color;
+        r.material.color = Color.green;
+    }
+
+    void OnMouseExit()
+    {
+        GetComponent<Renderer>().material.color = originalColor;
     }
     
 }

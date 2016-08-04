@@ -234,11 +234,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4000012067662098, guid: 7e8fbff8ccbebb848a47fb5e7207ea8e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 2.46
+      value: 2.97
       objectReference: {fileID: 0}
     - target: {fileID: 4000012067662098, guid: 7e8fbff8ccbebb848a47fb5e7207ea8e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -1.52
+      value: -0.17
       objectReference: {fileID: 0}
     - target: {fileID: 4000012067662098, guid: 7e8fbff8ccbebb848a47fb5e7207ea8e, type: 2}
       propertyPath: m_LocalPosition.z
@@ -267,6 +267,26 @@ Prefab:
     - target: {fileID: 1000010489614714, guid: 7e8fbff8ccbebb848a47fb5e7207ea8e, type: 2}
       propertyPath: m_Name
       value: Card_test
+      objectReference: {fileID: 0}
+    - target: {fileID: 212000014204231156, guid: 7e8fbff8ccbebb848a47fb5e7207ea8e,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 212000014204231156, guid: 7e8fbff8ccbebb848a47fb5e7207ea8e,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.7607844
+      objectReference: {fileID: 0}
+    - target: {fileID: 212000014204231156, guid: 7e8fbff8ccbebb848a47fb5e7207ea8e,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.7607844
+      objectReference: {fileID: 0}
+    - target: {fileID: 212000014204231156, guid: 7e8fbff8ccbebb848a47fb5e7207ea8e,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.7607844
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7e8fbff8ccbebb848a47fb5e7207ea8e, type: 2}
