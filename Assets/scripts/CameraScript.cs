@@ -21,8 +21,19 @@ public class CameraScript : MonoBehaviour
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         RaycastHit2D[] hits = Physics2D.GetRayIntersectionAll(Camera.main.ScreenPointToRay(Input.mousePosition));
         //Debug.Log("Clicked a card", selected);
-        if (hits.Length > 0)
-            hit = hits[0]; //constant raycasting
+        if (hits.Length > 0) {
+            int maxSortingOrder = hits[0].transform.GetComponent<SpriteRenderer>().sortingOrder;
+            hit = hits[0];
+            for (int i = 1; i < hits.Length; i++) {
+                if (hits[i].transform.tag == "Card") {
+                    int hitSortingOrder = hits[i].transform.GetComponent<SpriteRenderer>().sortingOrder;
+                    if (hitSortingOrder > maxSortingOrder) {
+                        maxSortingOrder = hitSortingOrder;
+                        hit = hits[i];
+                    }
+                }
+            }
+        }
         if (hit.collider != null)
         {
             if (selected == null)
@@ -39,7 +50,7 @@ public class CameraScript : MonoBehaviour
                 {
                     selected = hit.transform.gameObject;
                     Debug.Log("Clicked a card", selected);
-                    selected.GetComponent<SpriteRenderer>().sortingOrder = cardSortingOrder++;
+                    selected.GetComponent<SpriteRenderer>().sortingOrder = (cardSortingOrder = (cardSortingOrder+1)%32768);
                     selected.GetComponent<DynamicObject>().Select();
                     //Debug.Log("Clicked a card", hit.transform.gameObject);
                     offset = mousePos - new Vector2(selected.transform.position.x, selected.transform.position.y);
@@ -62,7 +73,7 @@ public class CameraScript : MonoBehaviour
                     //newCard.GetComponent<Transform>().position = new Vector3(hit.transform.position.x, hit.transform.position.y, -3.0f);
 
                     SpriteRenderer spriteRenderer = newCard.GetComponent<SpriteRenderer>();
-                    spriteRenderer.sortingOrder = cardSortingOrder++;
+                    spriteRenderer.sortingOrder = (cardSortingOrder = (cardSortingOrder+1)%32768);
                     //Do anything you want with the new card, like load its graphics or something
                     //Probably want to define the functions in CardActions, but anywhere is fine
                     //newCard.GetComponent<DynamicObject>().FlipTable();
