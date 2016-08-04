@@ -20,9 +20,11 @@ public class CameraScript : MonoBehaviour
     {
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         RaycastHit2D[] hits = Physics2D.GetRayIntersectionAll(Camera.main.ScreenPointToRay(Input.mousePosition));
+        //NOTE: Optimize by using GetRayIntersectionNonAlloc!!!
         //Debug.Log("Clicked a card", selected);
-        if (hits.Length > 0)
-            hit = hits[0]; //constant raycasting
+        if (hits.Length > 0) {
+            hit = hits[0];
+        }
         if (hit.collider != null)
         {
             if (selected == null)

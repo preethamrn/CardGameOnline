@@ -4,6 +4,7 @@ drag-n-drop:
 	✓Make cards 2D
 	✓Card priority. When card is clicked, bring it to front of all other cards.
 	-NullPointerReferences when selected is null but try to get selected.tag/etc. (ie. dragging background gives lots of errors)
+	-Raycast hits should account for sorting order
 	-Card goes off screen (limit Card movement to screen)
 	-Don't snap center of card to pointer when clicked.
 	-Solid border around card when hover/click/in_hand/on_table/etc...
@@ -18,6 +19,12 @@ cgo-parser:
 	✓Get the card assets and instantiate
 	✓Fix the object center when it is loaded (centered at bottom left corner) => change pivot
 	✓Card sprite becomes invisible when pivot is set (other than Vector.zero)
-	?Cards go to wrong layer and occasionally have sorting order issues (investigate) => fixed because switched to 2D???
-	-Cards aren't being Instantiated
-	-Differentiate between Deck/CardGroup/Card/Token
+	-Differentiate between Deck/CardGroup/Card/Token (and load assets into those classes)
+	-Error handling (when cgo file isn't in proper format should fail and go to start screen)
+
+
+optimizations:
+	-Use Physics2D.GetRayIntersectionNonAlloc in CameraScript.cs to get array of hits (doesn't need to alloc results array everytime)
+
+temp:
+	-Sprites can only be 1024x1024 max because of Texture2D initialization.

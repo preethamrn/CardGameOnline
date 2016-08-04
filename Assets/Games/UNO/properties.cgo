@@ -1,17 +1,22 @@
-deck: red_cards {
-	cards: [0r_1.png, 1r_1.png],
-	back: back.png,
-	size: 10
-}
+{
+	"red_cards": {
+		"type": "deck",
+		"cards": ["0r_1.png", "1r_1.png"],
+		"back": "back.png",
+		"size": 10
+	},
 
-deck: yellow_cards {
-	cards: [draw2y_1.png],
-	back: back.png,
-	size: 10
-}
+	"yellow_cards": {
+		"type": "deck",
+		"cards": ["draw2y_1.png"],
+		"back": "back.png",
+		"size": 10
+	},
 
-deck: wild_cards {
-	cards: [draw4_1.png],
-	back: back.png,
-	size: 10
+	"wild_cards": {
+		"type": "deck",
+		"cards": ["draw4_1.png"],
+		"back": "back.png",
+		"size": 10
+	}
 }

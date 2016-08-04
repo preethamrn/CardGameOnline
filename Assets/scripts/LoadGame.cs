@@ -1,16 +1,25 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Newtonsoft.Json.Linq;
 
 public class LoadGame : MonoBehaviour {
 
     string[] files;
-    string pathPreFix;
+    string pathPreFix = @"file://";
 
     // Use this for initialization
     void Start() {
         string path = ApplicationModel.gameDir;
-        pathPreFix = @"file://";
-        print(path);
+        string json = System.IO.File.ReadAllText(path + @"\properties.cgo");
+
+        JObject pieces = JObject.Parse(json);
+
+        foreach (System.Collections.Generic.KeyValuePair<string, JToken> piece in pieces) {
+            string name = piece.Key;
+            string type = (string) piece.Value["type"];
+            print(name + ": " + type);
+        }
+
         files = System.IO.Directory.GetFiles(path, "*.png");
         StartCoroutine(LoadImages());
     }
