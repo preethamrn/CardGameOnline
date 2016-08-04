@@ -34,7 +34,7 @@ public class CameraScript : MonoBehaviour
                 if (hit.transform.tag == "Card")
                 {
                     Debug.Log("TableFlipped a card", hit.transform.gameObject);
-                    hit.collider.gameObject.GetComponent<CardActions>().FlipTable();
+                    hit.collider.gameObject.GetComponent<DynamicObject>().FlipTable();
                 }
                 if (hit.transform.tag == "Background")
                 {
@@ -45,7 +45,7 @@ public class CameraScript : MonoBehaviour
                     spriteRenderer.sortingOrder = cardSortingOrder++;
                     //Do anything you want with the new card, like load its graphics or something
                     //Probably want to define the functions in CardActions, but anywhere is fine
-                    //newCard.GetComponent<CardActions>().FlipTable();
+                    //newCard.GetComponent<DynamicObject>().FlipTable();
                 }
 
             }
@@ -59,7 +59,7 @@ public class CameraScript : MonoBehaviour
                 {
                     Debug.Log("Dragging3", hit.transform.gameObject);
                     hit.transform.position = mousePos;
-                    hit.transform.rotation = Quaternion.identity;
+                    //hit.transform.rotation = Quaternion.identity;
                 }
 
             }
