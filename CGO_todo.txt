@@ -11,9 +11,9 @@ drag-n-drop:
 	-Fix sorting order overflow issue (when > 32767 bring card to front stops working)
 
 base-function:
+	-Add functionality for Decks (draw, shuffle), Cards (turn over)
 	-Add Hand
-	-Add functionality for Decks (draw, shuffle)
-	-
+	-Networking
 
 cgo-parser:
 	✓Get the card assets and instantiate
@@ -23,8 +23,9 @@ cgo-parser:
 	-Error handling (when cgo file isn't in proper format should fail and go to start screen)
 
 
-optimizations:
+optimizations/implementations:
 	-Use Physics2D.GetRayIntersectionNonAlloc in CameraScript.cs to get array of hits (doesn't need to alloc results array everytime)
+	-Use Queue to keep track of sorted order of cards (deque, enque when Card is picked up)
 
 temp:
 	-Sprites can only be 1024x1024 max because of Texture2D initialization.
