@@ -29,7 +29,6 @@ public class LoadGame : MonoBehaviour {
 
         foreach (string tstring in files)
         {
-
             string pathTemp = pathPreFix + tstring;
             WWW www = new WWW(pathTemp);
             yield return www;
