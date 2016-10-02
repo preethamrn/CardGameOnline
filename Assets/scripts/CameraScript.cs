@@ -124,7 +124,7 @@ public class CameraScript : MonoBehaviour
 
     public static void addCard(Vector2 pos, Sprite sprite = null)
     {
-        GameObject newCard = Instantiate(Resources.Load("card"), new Vector2(pos.x, pos.y), Quaternion.identity) as GameObject;
+        GameObject newCard = (GameObject)Instantiate(Resources.Load("card"), new Vector3(pos.x, pos.y, -3.0f), Quaternion.identity);
 
         SpriteRenderer spriteRenderer = newCard.GetComponent<SpriteRenderer>();
         spriteRenderer.sortingOrder = cardSortingOrder++;
