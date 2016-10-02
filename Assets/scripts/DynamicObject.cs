@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DynamicObject : MonoBehaviour {
+public class DynamicObject : MonoBehaviour
+{
 
-	void Start () {
-        
+    void Start()
+    {
+
     }
 
     // Update is called once per frame
@@ -20,12 +22,12 @@ public class DynamicObject : MonoBehaviour {
         GetComponent<Rigidbody>().AddExplosionForce(500.0f, transform.position - new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), -1.0f), 3.0f, 0.0f, ForceMode.Acceleration);
     }
 
-    void OnMouseEnter()
+    public void Highlight()
     {
         GetComponent<Renderer>().material.color = Color.green;
     }
 
-    void OnMouseExit()
+    public void Unhighlight()
     {
         GetComponent<Renderer>().material.color = Color.white;
     }
@@ -39,5 +41,5 @@ public class DynamicObject : MonoBehaviour {
     {
         GetComponent<Renderer>().material.color = Color.green;
     }
-    
+
 }

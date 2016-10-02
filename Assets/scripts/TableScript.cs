@@ -12,4 +12,5 @@ public class TableScript : MonoBehaviour {
 	void Update () {
 	
 	}
+
 }
