@@ -6,7 +6,6 @@ public class CameraScript : MonoBehaviour
 {
     private List<GameObject> selected = new List<GameObject>();
     private GameObject highlighted;
-    private Vector2 offset;
     private Vector2 mouseStart;
     private TableScript table;
 
@@ -30,12 +29,11 @@ public class CameraScript : MonoBehaviour
             {
                 if (topCard.tag == "Card")
                 {
-                    selected.Add(topCard);
+                    if(!selected.Contains(topCard)) selected.Add(topCard);
                     //Debug.Log("Clicked a card", topCard);
                     table.updateSortingOrder(topCard);
                     //selected[0].GetComponent<DynamicObject>().Select();
                     //Debug.Log("Clicked a card", hit.transform.gameObject);
-                    offset = mousePos - new Vector2(topCard.transform.position.x, selected[0].transform.position.y);
                 }
 
                 if (topCard.tag == "Background")
