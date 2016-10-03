@@ -7,6 +7,7 @@ public class CameraScript : MonoBehaviour
     private List<GameObject> selected = new List<GameObject>();
     private GameObject highlighted;
     private Vector2 offset;
+    private Vector2 mouseStart;
     private TableScript table;
 
     //private Color savedColor;
@@ -24,17 +25,17 @@ public class CameraScript : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
-
+            mouseStart = mousePos;
             if (topCard != null)
             {
                 if (topCard.tag == "Card")
                 {
                     selected.Add(topCard);
-                    //Debug.Log("Clicked a card", selected);
-                    table.updateSortingOrder(selected[0]);
+                    //Debug.Log("Clicked a card", topCard);
+                    table.updateSortingOrder(topCard);
                     //selected[0].GetComponent<DynamicObject>().Select();
                     //Debug.Log("Clicked a card", hit.transform.gameObject);
-                    offset = mousePos - new Vector2(selected[0].transform.position.x, selected[0].transform.position.y);
+                    offset = mousePos - new Vector2(topCard.transform.position.x, selected[0].transform.position.y);
                 }
 
                 if (topCard.tag == "Background")
@@ -48,25 +49,30 @@ public class CameraScript : MonoBehaviour
         {
             //Debug.Log("Dragging1", hit.transform.gameObject);
             //Debug.Log("Dragging2", hit.transform.gameObject);
-            if (selected.Count > 0)
+            Vector2 posChange;
+            posChange = mousePos - mouseStart;
+
+            foreach (GameObject sel in selected)
             {
-                if (selected[0].tag == "Card")
+                if (sel.tag == "Card")
                 {
-                    Vector2 newPos;
-                    //Debug.Log("Dragging3", hit.transform.gameObject);
-                    newPos = mousePos - offset;
-                    selected[0].transform.position = new Vector3(newPos.x, newPos.y, topCard.transform.position.z);
+                    //Debug.Log("Dragging3", sel);
+                    sel.transform.position = new Vector3(sel.transform.position.x + posChange.x, sel.transform.position.y + posChange.y, sel.transform.position.z);
                     //hit.transform.rotation = Quaternion.identity;
                 }
             }
+            mouseStart = mousePos;
 
         }
 
         if (Input.GetButtonUp("Fire1"))
         {
-            //hits[0] = new RaycastHit2D();
-            //selected[0].GetComponent<DynamicObject>().Unselect();
-            selected.Clear();
+            if (!Input.GetKey(KeyCode.LeftAlt) && !Input.GetKey(KeyCode.RightAlt))
+            {
+                //hits[0] = new RaycastHit2D();
+                //selected[0].GetComponent<DynamicObject>().Unselect();
+                selected.Clear();
+            }
         }
 
     }
