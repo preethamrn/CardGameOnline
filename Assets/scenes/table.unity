@@ -268,7 +268,9 @@ Prefab:
       propertyPath: m_Name
       value: Card_test
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 7e8fbff8ccbebb848a47fb5e7207ea8e, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1278682522
