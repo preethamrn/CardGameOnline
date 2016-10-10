@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Tags : MonoBehaviour {
+public class TagsComponent : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
