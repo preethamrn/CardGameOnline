@@ -1,26 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class TagsAndValues : MonoBehaviour {
 
-	private struct Tag {
-		public int id;
-		public string name;
-	}
-
 	private struct Value {
 		public int id;
-		public string name;
 		public int value;
 	}
 
-	private List<Tag> tags = new List<Tag>();
+	private List<int> tags = new List<int>();
 
-	public void AddTag(int id, string name) {
-		new Tag tag = new Tag();
-		tag.id = id;
-		tag.name = name;
-		tags.Add(tag);
+	public void AddTag(int id) {
+		tags.Add(id);
 	}
 	/*
 	// Use this for initialization
