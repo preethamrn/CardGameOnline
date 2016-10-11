@@ -39,7 +39,7 @@ public class TagsValuesManager : MonoBehaviour {
 		public string Name() { return name; }
 	}
 
-	private struct Action {
+	public struct Action {
 		private string label;
 		private Func<int> func;
 		public Action(string l) {
@@ -79,6 +79,14 @@ public class TagsValuesManager : MonoBehaviour {
 
 	public void AddTagToCard(string tag, TagsAndValues tv) {
 		AddTagToCard(GetIdOfTag(tag), tv);
+	}
+
+	public List<Action> GetActions(int id) {
+		return tagsList[id].Actions();
+	}
+
+	public List<Action> GetActions(string tag) {
+		return GetActions(GetIdOfTag(tag));
 	}
 
 	void Start () {
