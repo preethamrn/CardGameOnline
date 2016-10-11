@@ -4,14 +4,18 @@ using System;
 
 public class CameraScript : MonoBehaviour {
     private List<GameObject> selected = new List<GameObject>();
+    private HashSet<TagsManager.Operation> operations = new HashSet<TagsManager.Operation>();
+
     private GameObject prevCard = null;
 
     private Vector2 mouseStart;
     private TableScript table;
+    private TagsManager tagManager;
 
 
     void Start() {
         table = FindObjectOfType<TableScript>();
+        tagManager = FindObjectOfType<TagsManager>();
     }
 
     void Update() {
@@ -29,15 +33,25 @@ public class CameraScript : MonoBehaviour {
                 if (topCard.tag == "Card") {
                     if (!selected.Contains(topCard)) {
                         selected.Add(topCard);
+                        List<int> tags = topCard.GetComponent<Tags>().GetTags();
+                        foreach (int tag in tags) {
+                            operations.UnionWith(tagManager.GetOperations(tag));
+                        }
                         topCard.GetComponent<Highlighting>().Select();
                         table.updateSortingOrder(topCard);
                     }
                 }
-
+                
                 if (topCard.tag == "Background") {
                     table.addCard(new Vector2(mousePos.x, mousePos.y));
                 }
             }
+        }
+
+        if (Input.GetButtonDown("Fire2")) {
+            //TODO: create a context menu/drop down on right click
+            //GUI.Button(new Rect(mousePos, new Vector2(10, 10)), "Click");
+            Debug.Log("Right Click. Create operations menu here linked to actions.");
         }
 
         if (Input.GetButton("Fire1")) {
@@ -58,6 +72,7 @@ public class CameraScript : MonoBehaviour {
                     card.GetComponent<Highlighting>().Unselect();
                 }
                 selected.Clear();
+                operations.Clear();
             }
         }
 

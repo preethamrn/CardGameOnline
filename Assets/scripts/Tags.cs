@@ -16,6 +16,10 @@ public class Tags : MonoBehaviour {
 	public void AddTag(int id) {
 		tags.Add(id);
 	}
+
+    public List<int> GetTags() {
+        return tags;
+    }
 	/*
 	// Use this for initialization
 	void Start () {
