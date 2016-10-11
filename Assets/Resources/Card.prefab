@@ -20,9 +20,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000012067662098}
   - 212: {fileID: 212000014204231156}
-  - 114: {fileID: 114000014288439856}
   - 61: {fileID: 61000011661565674}
-  - 114: {fileID: 114000010649846292}
+  - 114: {fileID: 114000011036742910}
   m_Layer: 0
   m_Name: Card
   m_TagString: Card
@@ -57,7 +56,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 2.25, y: 3.5}
---- !u!114 &114000010649846292
+--- !u!114 &114000011036742910
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -65,18 +64,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000010489614714}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e06957319883f074ebefd56940967bd9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114000014288439856
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010489614714}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4756cd481a558e349b26893cdc6e438d, type: 3}
+  m_Script: {fileID: 11500000, guid: fc6dd1480ce1d2e4ca8ac7cd16dd7fdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &212000014204231156
