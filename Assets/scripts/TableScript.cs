@@ -19,18 +19,8 @@ public class TableScript : MonoBehaviour {
     public GameObject getTopCard(Vector2 mousePos) {
         hits = Physics2D.GetRayIntersectionAll(Camera.main.ScreenPointToRay(Input.mousePosition)); //Get all of the objects along the raycast
         //Insertion Sort
-        int y;
-        int so;
         int j;
         RaycastHit2D temp;
-
-        /*
-        string str = "";
-        for (int i = 0; i < hits.Length; i++) {
-            str += "; " + hits[i].transform.position.z + ", " + hits[i].transform.GetComponent<SpriteRenderer>().sortingOrder;
-        }
-        Debug.Log("1: " + str, this);
-        */
 
         for (int i = 0; i < hits.Length; i++)
         {
@@ -57,15 +47,6 @@ public class TableScript : MonoBehaviour {
 
             }
         }
-
-        /*
-        str = "";
-        for (int i = 0; i < hits.Length; i++) {
-            str += "; " + hits[i].transform.position.z + ", " + hits[i].transform.GetComponent<SpriteRenderer>().sortingOrder;
-        }
-        Debug.Log("2: " + str, this);
-        */
-
         if (hits.Length > 0) return hits[0].transform.gameObject;
         else return null;
     }
@@ -81,10 +62,5 @@ public class TableScript : MonoBehaviour {
         SpriteRenderer spriteRenderer = newCard.GetComponent<SpriteRenderer>();
         spriteRenderer.sortingOrder = cardSortingOrder++;
         if (sprite != null) spriteRenderer.sprite = sprite;
-
-        //Do anything you want with the new card, like load its graphics or something
-        //Probably want to define the functions in CardActions, but anywhere is fine
-        //newCard.GetComponent<DynamicObject>().FlipTable();
-
     }
 }

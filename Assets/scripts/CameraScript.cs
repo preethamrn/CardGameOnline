@@ -9,8 +9,6 @@ public class CameraScript : MonoBehaviour
     private Vector2 mouseStart;
     private TableScript table;
 
-    //private Color savedColor;
-
 
     void Start()
     {
@@ -30,10 +28,7 @@ public class CameraScript : MonoBehaviour
                 if (topCard.tag == "Card")
                 {
                     if(!selected.Contains(topCard)) selected.Add(topCard);
-                    //Debug.Log("Clicked a card", topCard);
                     table.updateSortingOrder(topCard);
-                    //selected[0].GetComponent<DynamicObject>().Select();
-                    //Debug.Log("Clicked a card", hit.transform.gameObject);
                 }
 
                 if (topCard.tag == "Background")
@@ -45,8 +40,6 @@ public class CameraScript : MonoBehaviour
 
         if (Input.GetButton("Fire1"))
         {
-            //Debug.Log("Dragging1", hit.transform.gameObject);
-            //Debug.Log("Dragging2", hit.transform.gameObject);
             Vector2 posChange;
             posChange = mousePos - mouseStart;
 
@@ -54,9 +47,7 @@ public class CameraScript : MonoBehaviour
             {
                 if (sel.tag == "Card")
                 {
-                    //Debug.Log("Dragging3", sel);
                     sel.transform.position = new Vector3(sel.transform.position.x + posChange.x, sel.transform.position.y + posChange.y, sel.transform.position.z);
-                    //hit.transform.rotation = Quaternion.identity;
                 }
             }
             mouseStart = mousePos;
@@ -67,8 +58,6 @@ public class CameraScript : MonoBehaviour
         {
             if (!Input.GetKey(KeyCode.LeftAlt) && !Input.GetKey(KeyCode.RightAlt))
             {
-                //hits[0] = new RaycastHit2D();
-                //selected[0].GetComponent<DynamicObject>().Unselect();
                 selected.Clear();
             }
         }
