@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ActionsComponent : MonoBehaviour {
+public class OperationsComponent : MonoBehaviour {
 
 	/*
 	// Use this for initialization

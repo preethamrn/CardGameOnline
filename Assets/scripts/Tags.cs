@@ -2,13 +2,15 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class TagsValues : MonoBehaviour {
+public class Tags : MonoBehaviour {
 
+	/*
 	private struct Value {
 		public int id;
 		public int value;
 	}
-
+	*/
+	
 	private List<int> tags = new List<int>();
 
 	public void AddTag(int id) {
