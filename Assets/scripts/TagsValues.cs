@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class TagsAndValues : MonoBehaviour {
+public class TagsValues : MonoBehaviour {
 
 	private struct Value {
 		public int id;

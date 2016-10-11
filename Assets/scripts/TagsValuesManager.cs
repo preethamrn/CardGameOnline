@@ -41,14 +41,14 @@ public class TagsValuesManager : MonoBehaviour {
 
 	public struct Action {
 		private string label;
-		private Func<int> func;
+		private Func<TagsValues, int> func;
 		public Action(string l) {
 			label = l;
-			func = delegate { return 0; };
+			func = (TagsValues tv) => { return 0; };
 		}
 		public string Label() { return label; }
-		public Func<int> Func() { return func; }	//Using a lambda function like this: action.Func().Invoke();
-		public void setFunc(Func<int> f) { func = f; }
+		public Func<TagsValues, int> Func() { return func; }	//Using a lambda function like this: action.Func().Invoke();
+		public void setFunc(Func<TagsValues, int> f) { func = f; }
 	}
 
 	private List<TagTemplate> tagsList = new List<TagTemplate>();
@@ -73,11 +73,11 @@ public class TagsValuesManager : MonoBehaviour {
 		return -1;
 	}
 
-	public void AddTagToCard(int id, TagsAndValues tv) {
+	public void AddTagToCard(int id, TagsValues tv) {
 		tv.AddTag(id);
 	}
 
-	public void AddTagToCard(string tag, TagsAndValues tv) {
+	public void AddTagToCard(string tag, TagsValues tv) {
 		AddTagToCard(GetIdOfTag(tag), tv);
 	}
 
@@ -89,9 +89,24 @@ public class TagsValuesManager : MonoBehaviour {
 		return GetActions(GetIdOfTag(tag));
 	}
 
-	void Start () {
-		//setup default tags
+	public void AddActionToTag(Func<TagsValues, int> f, string lable, int id) {
+		Action a = new Action(lable);
+		a.setFunc(f);
+		tagsList[id].AddAction(a);
 	}
-	
 
+	public void AddActionToTag(Func<TagsValues, int> f, string lable, string tag) {
+		AddActionToTag(f, lable, GetIdOfTag(tag));
+	}
+
+	void Start () {
+		//remove code from here eventually
+		//example setup for a new tag
+		NewTagTemplate("card");
+		//Build functions to make these functions easier
+		Func<TagsValues, int> deleteFunction = (TagsValues tv) => {
+			tv.gameObject.GetComponent<ActionsComponent>().DeleteThis();
+			return 1; };
+		AddActionToTag(deleteFunction, "Delete this card", "card");
+	}
 }
