@@ -22,6 +22,7 @@ GameObject:
   - 212: {fileID: 212000014204231156}
   - 61: {fileID: 61000011661565674}
   - 114: {fileID: 114000011036742910}
+  - 114: {fileID: 114000011476975396}
   m_Layer: 0
   m_Name: Card
   m_TagString: Card
@@ -36,8 +37,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010489614714}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.24, y: -1.18, z: -3}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
@@ -65,6 +66,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc6dd1480ce1d2e4ca8ac7cd16dd7fdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114000011476975396
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010489614714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 805bb3835ab1af1499e481744c71d383, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &212000014204231156
