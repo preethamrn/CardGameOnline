@@ -10,8 +10,13 @@ drag-n-drop:
 	-Solid border around card when hover/click/in_hand/on_table/etc...
 	-Fix sorting order overflow issue (when > 32767 bring card to front stops working)
 
+actions-popup:
+	✓populate right click menu (create list of actions each time card is selected)
+	BUG: when an object doesn't have tags it doesn't update the operations list (operations list should be empty) //ensure there are tags during loadgame validation
+	!show a right click popup
+
 base-function:
-	-Add functionality for Decks (draw, shuffle), Cards (turn over)
+	!Add functionality for Decks (draw, shuffle), Cards (turn over)
 	-Add Hand
 	-Networking
 
@@ -19,7 +24,7 @@ cgo-parser:
 	✓Get the card assets and instantiate
 	✓Fix the object center when it is loaded (centered at bottom left corner) => change pivot
 	✓Card sprite becomes invisible when pivot is set (other than Vector.zero)
-	-Differentiate between Deck/CardGroup/Card/Token (and load assets into those classes)
+	!Differentiate between Deck/CardGroup/Card/Token (and load assets into those classes)
 	-Error handling (when cgo file isn't in proper format should fail and go to start screen)
 
 
@@ -29,3 +34,7 @@ optimizations/implementations:
 
 temp:
 	-Sprites can only be 1024x1024 max because of Texture2D initialization.
+
+
+chat:
+	-create a chat system for people to post links/communicate while playing the game

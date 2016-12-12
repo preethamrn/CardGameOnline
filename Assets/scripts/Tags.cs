@@ -20,15 +20,4 @@ public class Tags : MonoBehaviour {
     public List<int> GetTags() {
         return tags;
     }
-	/*
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-	*/
 }

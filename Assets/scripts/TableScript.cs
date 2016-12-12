@@ -1,15 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class TableScript : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    TagsManager tagsManager;
+
+    // Use this for initialization
+    void Start () {
+        tagsManager = FindObjectOfType<TagsManager>();
+    }
+
+    // Update is called once per frame
+    void Update () {
 	
 	}
 
@@ -55,12 +58,17 @@ public class TableScript : MonoBehaviour {
         card.GetComponent<SpriteRenderer>().sortingOrder = (cardSortingOrder = (cardSortingOrder + 1) % 32768);
     }
 
-    public void addCard(Vector2 pos, Sprite sprite = null)
+    public void addCard(Vector2 pos, List<string> tags, Sprite sprite = null)
     {
         GameObject newCard = (GameObject)Instantiate(Resources.Load("card"), new Vector3(pos.x, pos.y, -3.0f), Quaternion.identity);
 
         SpriteRenderer spriteRenderer = newCard.GetComponent<SpriteRenderer>();
         spriteRenderer.sortingOrder = cardSortingOrder++;
+
+        foreach (string tag in tags) {
+            tagsManager.AddTagToCard(tag, newCard);
+        }
+
         if (sprite != null) spriteRenderer.sprite = sprite;
     }
 }

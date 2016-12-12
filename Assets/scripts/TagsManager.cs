@@ -4,14 +4,6 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class TagsManager : MonoBehaviour {
-	/*
-	// Use this for initialization
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-	*/
 
 	private struct TagTemplate {
 		private int id;
@@ -53,7 +45,7 @@ public class TagsManager : MonoBehaviour {
 				return tt.Id();
 			}
 		}
-		return -1;
+		return -1; //TODO: possibly create a new ID here and return it?
 	}
 
 	public void AddTagToCard(int id, GameObject o) {
@@ -90,7 +82,7 @@ public class TagsManager : MonoBehaviour {
 		Func<GameObject, int> deleteFunction = (GameObject o) => {
 			o.GetComponent<OperationsComponent>().DeleteThis();
 			return 1; };
-		AddOperationToTag(deleteFunction, "Delete this card", "card");
+		AddOperationToTag(deleteFunction, "Delete this card", "card"); //DEBUGGING: temporary testing. Have the operation and tags stored in the properties.cgo file
 	}
 
 

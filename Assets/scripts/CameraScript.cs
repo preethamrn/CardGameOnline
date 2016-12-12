@@ -32,18 +32,20 @@ public class CameraScript : MonoBehaviour {
             if (topCard != null) {
                 if (topCard.tag == "Card") {
                     if (!selected.Contains(topCard)) {
-                        selected.Add(topCard);
                         List<int> tags = topCard.GetComponent<Tags>().GetTags();
                         foreach (int tag in tags) {
-                            operations.UnionWith(tagManager.GetOperations(tag));
+                            if (selected.Count == 0) operations.UnionWith(tagManager.GetOperations(tag)); //if selected is empty before adding first card
+                            else operations.IntersectWith(tagManager.GetOperations(tag));
                         }
+                        selected.Add(topCard);
                         topCard.GetComponent<Highlighting>().Select();
                         table.updateSortingOrder(topCard);
                     }
                 }
                 
                 if (topCard.tag == "Background") {
-                    table.addCard(new Vector2(mousePos.x, mousePos.y));
+                    List<string> tags = new List<string>(); tags.Add("card");
+                    table.addCard(new Vector2(mousePos.x, mousePos.y), tags);
                 }
             }
         }

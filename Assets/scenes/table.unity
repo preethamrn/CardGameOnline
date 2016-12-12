@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3976fedb02e871a4f9994c246e9c26b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  contentPanel: {fileID: 0}
+  contentPanel: {fileID: 11498782, guid: e4f61acd2b90b2c4bb20e1b9e7506e0a, type: 2}
   canvas: {fileID: 11317850}
 --- !u!114 &11317848
 MonoBehaviour:
