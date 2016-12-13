@@ -22,14 +22,14 @@ public class TagsManager : MonoBehaviour {
 
 	public struct Operation {
 		private string label;
-		private Func<GameObject, int> func;
+		private Func<List<GameObject>, int> func;
 		public Operation(string l) {
 			label = l;
-			func = (GameObject go) => { return 0; };
+			func = (List<GameObject> go) => { return 0; };
 		}
 		public string Label() { return label; }
-		public Func<GameObject, int> Func() { return func; }	//Using a lambda function like this: action.Func().Invoke();
-		public void setFunc(Func<GameObject, int> f) { func = f; }
+		public Func<List<GameObject>, int> Func() { return func; }	//Using a lambda function like this: action.Func().Invoke();
+		public void setFunc(Func<List<GameObject>, int> f) { func = f; }
 	}
 
 	private List<TagTemplate> tagsList = new List<TagTemplate>();
@@ -64,13 +64,13 @@ public class TagsManager : MonoBehaviour {
 		return GetOperations(GetIdOfTag(tag));
 	}
 
-	public void AddOperationToTag(Func<GameObject, int> f, string lable, int id) {
+	public void AddOperationToTag(Func<List<GameObject>, int> f, string lable, int id) {
 		Operation a = new Operation(lable);
 		a.setFunc(f);
 		tagsList[id].AddOperation(a);
 	}
 
-	public void AddOperationToTag(Func<GameObject, int> f, string lable, string tag) {
+	public void AddOperationToTag(Func<List<GameObject>, int> f, string lable, string tag) {
 		AddOperationToTag(f, lable, GetIdOfTag(tag));
 	}
 
@@ -79,8 +79,9 @@ public class TagsManager : MonoBehaviour {
 		//example setup for a new tag
 		NewTagTemplate("card");
 		//Build functions to make these functions easier
-		Func<GameObject, int> deleteFunction = (GameObject o) => {
-			o.GetComponent<OperationsComponent>().DeleteThis();
+		Func<List<GameObject>, int> deleteFunction = (List<GameObject> o) => {
+            Debug.Log(o.Count);
+            foreach (GameObject obj in o) obj.GetComponent<OperationsComponent>().DeleteThis();
 			return 1; };
 		AddOperationToTag(deleteFunction, "Delete this card", "card"); //DEBUGGING: temporary testing. Have the operation and tags stored in the properties.cgo file
 	}

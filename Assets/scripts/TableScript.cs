@@ -25,23 +25,18 @@ public class TableScript : MonoBehaviour {
         int j;
         RaycastHit2D temp;
 
-        for (int i = 0; i < hits.Length; i++)
-        {
+        for (int i = 0; i < hits.Length; i++) {
             j = i;
-            while (j > 0)
-            {
+            while (j > 0) {
                 j--;
-                if (hits[j + 1].transform.position.z < hits[j].transform.position.z)
-                { //if the current z is more negative (closer to the camera) than the preceeding, swap
+                if (hits[j + 1].transform.position.z < hits[j].transform.position.z) { //if the current z is more negative (closer to the camera) than the preceeding, swap
                     temp = hits[j];
                     hits[j] = hits[j + 1];
                     hits[j + 1] = temp;
                 }
 
-                else if (hits[j + 1].transform.position.z == hits[j].transform.position.z)
-                { //if the order cannot be determined from the z position, try sorting order
-                    if (hits[j + 1].transform.GetComponent<SpriteRenderer>().sortingOrder > hits[j].transform.GetComponent<SpriteRenderer>().sortingOrder)
-                    {
+                else if (hits[j + 1].transform.position.z == hits[j].transform.position.z) { //if the order cannot be determined from the z position, try sorting order
+                    if (hits[j + 1].transform.GetComponent<SpriteRenderer>().sortingOrder > hits[j].transform.GetComponent<SpriteRenderer>().sortingOrder) {
                         temp = hits[j];
                         hits[j] = hits[j + 1];
                         hits[j + 1] = temp;

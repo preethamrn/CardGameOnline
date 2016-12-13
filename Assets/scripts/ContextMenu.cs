@@ -10,9 +10,9 @@ public class ContextMenuItem {
 
     public string text;             // text to display on button
     public Button button;           // sample button prefab
-    public Action<Image> action;    // delegate to method that needs to be executed when button is clicked
+    public Func<List<GameObject>, int> action;    // delegate to method that needs to be executed when button is clicked
 
-    public ContextMenuItem(string text, Button button, Action<Image> action) {
+    public ContextMenuItem(string text, Button button, Func<List<GameObject>, int> action) {
         this.text = text;
         this.button = button;
         this.action = action;
@@ -28,7 +28,7 @@ public class ContextMenu : MonoBehaviour {
     public static ContextMenu Instance {
         get {
             if (instance == null) {
-                instance = FindObjectOfType(typeof(ContextMenu)) as ContextMenu;
+                instance = FindObjectOfType<ContextMenu>();
                 if (instance == null) {
                     instance = new ContextMenu();
                 }
@@ -37,7 +37,7 @@ public class ContextMenu : MonoBehaviour {
         }
     }
 
-    public void CreateContextMenu(List<ContextMenuItem> items, Vector2 position) {
+    public void CreateContextMenu(List<ContextMenuItem> items, Vector2 position, List<GameObject> gameObjects, int param) {
         // here we are creating and displaying Context Menu
 
         Image panel = Instantiate(contentPanel, new Vector3(position.x, position.y, 0), Quaternion.identity) as Image;
@@ -50,7 +50,7 @@ public class ContextMenu : MonoBehaviour {
             Button button = Instantiate(item.button) as Button;
             Text buttonText = button.GetComponentInChildren(typeof(Text)) as Text;
             buttonText.text = item.text;
-            button.onClick.AddListener(delegate { tempReference.action(panel); });
+            button.onClick.AddListener(delegate { tempReference.action(gameObjects); });
             button.transform.SetParent(panel.transform);
         }
     }

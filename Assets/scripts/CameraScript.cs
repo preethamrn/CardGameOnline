@@ -51,8 +51,11 @@ public class CameraScript : MonoBehaviour {
         }
 
         if (Input.GetButtonDown("Fire2")) {
-            //TODO: create a context menu/drop down on right click
-            //GUI.Button(new Rect(mousePos, new Vector2(10, 10)), "Click");
+            //TODO: make the menu close after a click
+            //TODO: destroy the current ContentPanel as soon as something else is clicked (another card/right click/background)
+            List<GameObject> selectedRef = new List<GameObject>(selected);
+            HashSet<TagsManager.Operation> operationsRef = new HashSet<TagsManager.Operation>(operations);
+            GetComponent<ItemController>().CreateMenu(operationsRef, selectedRef, 0); //DEBUGGING: change the int param based on user input
             Debug.Log("Right Click. Create operations menu here linked to actions.");
         }
 

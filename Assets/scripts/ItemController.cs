@@ -9,41 +9,14 @@ public class ItemController : MonoBehaviour {
     public Button sampleButton;                         // sample button prefab
     private List<ContextMenuItem> contextMenuItems;     // list of items in menu
 
-    void Awake() {
-        // Here we are creating and populating our future Context Menu.
-        // I do it in Awake once, but as you can see, 
-        // it can be edited at runtime anywhere and anytime.
-
+    public void CreateMenu(HashSet<TagsManager.Operation> operations, List<GameObject> gameObjects, int param) {
         contextMenuItems = new List<ContextMenuItem>();
-        Action<Image> equip = new Action<Image>(EquipAction);
-        Action<Image> use = new Action<Image>(UseAction);
-        Action<Image> drop = new Action<Image>(DropAction);
-
-        contextMenuItems.Add(new ContextMenuItem("Equip", sampleButton, equip));
-        contextMenuItems.Add(new ContextMenuItem("Use", sampleButton, use));
-        contextMenuItems.Add(new ContextMenuItem("Drop", sampleButton, drop));
-    }
-
-    void OnMouseOver() {
-        if (Input.GetMouseButtonDown(1)) {
-            Vector3 pos = Camera.main.WorldToScreenPoint(transform.position);
-            ContextMenu.Instance.CreateContextMenu(contextMenuItems, new Vector2(pos.x, pos.y));
+        foreach (TagsManager.Operation operation in operations) {
+            Func<List<GameObject>, int> func = operation.Func();
+            contextMenuItems.Add(new ContextMenuItem(operation.Label(), sampleButton, func));
         }
 
-    }
-
-    void EquipAction(Image contextPanel) {
-        Debug.Log("Equipped");
-        Destroy(contextPanel.gameObject);
-    }
-
-    void UseAction(Image contextPanel) {
-        Debug.Log("Used");
-        Destroy(contextPanel.gameObject);
-    }
-
-    void DropAction(Image contextPanel) {
-        Debug.Log("Dropped");
-        Destroy(contextPanel.gameObject);
+        Vector3 pos = Camera.main.WorldToScreenPoint(transform.position);
+        ContextMenu.Instance.CreateContextMenu(contextMenuItems, new Vector2(0,0), gameObjects, param); //pass the gameobjects and any parameters you want to the context menu for actions
     }
 }
