@@ -80,9 +80,9 @@ public class TagsManager : MonoBehaviour {
 		NewTagTemplate("card");
 		//Build functions to make these functions easier
 		Func<List<GameObject>, int> deleteFunction = (List<GameObject> o) => {
-            Debug.Log(o.Count);
             foreach (GameObject obj in o) obj.GetComponent<OperationsComponent>().DeleteThis();
-			return 1; };
+            FindObjectOfType<CameraScript>().DestroyContentPanel(); ///DEBUGGING: This should be added to every action??
+            return 1; };
 		AddOperationToTag(deleteFunction, "Delete this card", "card"); //DEBUGGING: temporary testing. Have the operation and tags stored in the properties.cgo file
 	}
 

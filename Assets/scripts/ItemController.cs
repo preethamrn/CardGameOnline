@@ -15,8 +15,15 @@ public class ItemController : MonoBehaviour {
             Func<List<GameObject>, int> func = operation.Func();
             contextMenuItems.Add(new ContextMenuItem(operation.Label(), sampleButton, func));
         }
-
-        Vector3 pos = Camera.main.WorldToScreenPoint(transform.position);
+        contextMenuItems.Add(new ContextMenuItem("Close", sampleButton, (List<GameObject> o) => {
+            FindObjectOfType<CameraScript>().DestroyContentPanel();
+            return 1;
+        }));
+        //Vector3 pos = Camera.main.WorldToScreenPoint(transform.position); // get screen point of current transform where you've rightclicked
         ContextMenu.Instance.CreateContextMenu(contextMenuItems, new Vector2(0,0), gameObjects, param); //pass the gameobjects and any parameters you want to the context menu for actions
+    }
+
+    public void DestroyMenu() {
+        ContextMenu.Instance.DestroyContentPanel();
     }
 }

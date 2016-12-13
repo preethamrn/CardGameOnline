@@ -5,6 +5,7 @@ using System;
 public class CameraScript : MonoBehaviour {
     private List<GameObject> selected = new List<GameObject>();
     private HashSet<TagsManager.Operation> operations = new HashSet<TagsManager.Operation>();
+    private bool contentPanelOpen = false;
 
     private GameObject prevCard = null;
 
@@ -28,6 +29,8 @@ public class CameraScript : MonoBehaviour {
         }
         
         if (Input.GetButtonDown("Fire1")) {
+            if (contentPanelOpen) return;
+
             mouseStart = mousePos;
             if (topCard != null) {
                 if (topCard.tag == "Card") {
@@ -42,24 +45,27 @@ public class CameraScript : MonoBehaviour {
                         table.updateSortingOrder(topCard);
                     }
                 }
-                
-                if (topCard.tag == "Background") {
+                else if (topCard.tag == "Background") {
                     List<string> tags = new List<string>(); tags.Add("card");
                     table.addCard(new Vector2(mousePos.x, mousePos.y), tags);
                 }
             }
         }
 
-        if (Input.GetButtonDown("Fire2")) {
-            //TODO: make the menu close after a click
-            //TODO: destroy the current ContentPanel as soon as something else is clicked (another card/right click/background)
-            List<GameObject> selectedRef = new List<GameObject>(selected);
-            HashSet<TagsManager.Operation> operationsRef = new HashSet<TagsManager.Operation>(operations);
-            GetComponent<ItemController>().CreateMenu(operationsRef, selectedRef, 0); //DEBUGGING: change the int param based on user input
-            Debug.Log("Right Click. Create operations menu here linked to actions.");
+        else if (Input.GetButtonDown("Fire2")) {
+            if (contentPanelOpen) return;
+
+            //TODO: single card selected with only right click
+            if (selected.Count != 0) {
+                List<GameObject> selectedRef = new List<GameObject>(selected);
+                HashSet<TagsManager.Operation> operationsRef = new HashSet<TagsManager.Operation>(operations);
+                GetComponent<ItemController>().CreateMenu(operationsRef, selectedRef, 0); //DEBUGGING: change the int param based on user input
+                contentPanelOpen = true;
+            }
         }
 
-        if (Input.GetButton("Fire1")) {
+        else if (Input.GetButton("Fire1")) {
+            if (contentPanelOpen) return;
             Vector2 posChange;
             posChange = mousePos - mouseStart;
 
@@ -71,7 +77,8 @@ public class CameraScript : MonoBehaviour {
             mouseStart = mousePos;
         }
 
-        if (Input.GetButtonUp("Fire1")) {
+        else if (Input.GetButtonUp("Fire1")) {
+            if (contentPanelOpen) return;
             if (!Input.GetKey(KeyCode.LeftAlt) && !Input.GetKey(KeyCode.RightAlt)) {
                 foreach (GameObject card in selected) {
                     card.GetComponent<Highlighting>().Unselect();
@@ -82,5 +89,10 @@ public class CameraScript : MonoBehaviour {
         }
 
         prevCard = topCard; //renew the value of prevCard for future frames
+    }
+
+    public void DestroyContentPanel() {
+        GetComponent<ItemController>().DestroyMenu();
+        contentPanelOpen = false;
     }
 }

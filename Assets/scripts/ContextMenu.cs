@@ -21,6 +21,7 @@ public class ContextMenuItem {
 
 public class ContextMenu : MonoBehaviour {
     public Image contentPanel;              // content panel prefab
+    private Image panel;                    // current ContentPanel
     public Canvas canvas;                   // link to main canvas, where will be Context Menu
 
     private static ContextMenu instance;    // some kind of singleton here
@@ -38,9 +39,10 @@ public class ContextMenu : MonoBehaviour {
     }
 
     public void CreateContextMenu(List<ContextMenuItem> items, Vector2 position, List<GameObject> gameObjects, int param) {
-        // here we are creating and displaying Context Menu
+        DestroyContentPanel(); // destroy the current panel if it still exists
 
-        Image panel = Instantiate(contentPanel, new Vector3(position.x, position.y, 0), Quaternion.identity) as Image;
+        // here we are creating and displaying Context Menu
+        panel = Instantiate(contentPanel, new Vector3(position.x, position.y, 0), Quaternion.identity) as Image;
         panel.transform.SetParent(canvas.transform);
         panel.transform.SetAsLastSibling();
         panel.rectTransform.anchoredPosition = position;
@@ -53,5 +55,9 @@ public class ContextMenu : MonoBehaviour {
             button.onClick.AddListener(delegate { tempReference.action(gameObjects); });
             button.transform.SetParent(panel.transform);
         }
+    }
+
+    public void DestroyContentPanel() {
+        if (panel != null) Destroy(panel.gameObject);
     }
 }

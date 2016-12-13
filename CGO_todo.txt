@@ -13,10 +13,8 @@ drag-n-drop:
 actions-popup:
 	✓populate right click menu (create list of actions each time card is selected)
 	✓show a right click popup
-	BUG: when an object doesn't have tags it doesn't update the operations list (operations list should be empty) //ensure there are tags during loadgame validation
-	BUG: click propogates onto the board
-	BUG: clicking doesn't destroy the ContentPanel
-	BUG: to get a menu, you need to select card (left click) and right click while holding
+	BUG: when an object doesn't have tags it doesn't update the operations list (operations list should be empty) //ensure there are tags (even if it's an empty tag) during loadgame validation
+	BUG: to get a single card menu, you need to select card (left click) and right click while holding
 	
 base-function:
 	!Add functionality for Decks (draw, shuffle), Cards (turn over)
@@ -37,6 +35,7 @@ optimizations/implementations:
 
 temp:
 	-Sprites can only be 1024x1024 max because of Texture2D initialization.
+	-ContentPanel will keep growing vertically as number of operations grow (make scrollable list)
 
 
 chat:
