@@ -37,7 +37,7 @@ public class LoadGame : MonoBehaviour {
             yield return www;
             Texture2D texTmp = new Texture2D(1024, 1024, TextureFormat.DXT1, false);
             www.LoadImageIntoTexture(texTmp);
-            table.addCard(Vector2.zero, Sprite.Create(texTmp, new Rect(0,0,texTmp.width,texTmp.height), new Vector2(0.5f, 0.5f)));
+            table.addCard(Vector2.zero, null, Sprite.Create(texTmp, new Rect(0,0,texTmp.width,texTmp.height), new Vector2(0.5f, 0.5f))); //DEBUGGING: load the tags and each separate object recursively
         }
 
     }
