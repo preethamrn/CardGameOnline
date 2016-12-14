@@ -3,10 +3,10 @@ TODO:
 drag-n-drop: 
 	✓Make cards 2D
 	✓Card priority. When card is clicked, bring it to front of all other cards.
-	-NullPointerReferences when selected is null but try to get selected.tag/etc. (ie. dragging background gives lots of errors)
-	-Raycast hits should account for sorting order
-	-Card goes off screen (limit Card movement to screen)
-	-Don't snap center of card to pointer when clicked.
+	✓NullPointerReferences when selected is null but try to get selected.tag/etc. (ie. dragging background gives lots of errors)
+	✓Raycast hits should account for sorting order
+	✓Card goes off screen (limit Card movement to screen)
+	✓Don't snap center of card to pointer when clicked.
 	-Solid border around card when hover/click/in_hand/on_table/etc...
 	-Fix sorting order overflow issue (when > 32767 bring card to front stops working)
 
@@ -21,6 +21,10 @@ base-function:
 	-Add Hand
 	-Networking
 
+games-list:
+	-Scroll bar in case games exceed screen space (either width or height)
+	-Make display prettier
+
 cgo-parser:
 	✓Get the card assets and instantiate
 	✓Fix the object center when it is loaded (centered at bottom left corner) => change pivot
@@ -32,11 +36,21 @@ cgo-parser:
 optimizations/implementations:
 	-Use Physics2D.GetRayIntersectionNonAlloc in CameraScript.cs to get array of hits (doesn't need to alloc results array everytime)
 	-Use Queue to keep track of sorted order of cards (deque, enque when Card is picked up)
+	-Loads all images in folder at startup (instead only load images when needed) [easy fix]
 
 temp:
 	-Sprites can only be 1024x1024 max because of Texture2D initialization.
 	-ContentPanel will keep growing vertically as number of operations grow (make scrollable list)
+	-When card leaves the frame, it gets snapped back to (0, 0)
 
+networking:
+	-How to connect multiple players (sync all variables (deck list<cards>, tags), ensure the properties.cgo file is exactly the same (hash validation with host))
+	-Sync all card movements
+	-Separate card visibilities & operations (based on permission system) for each player
+	-Show every player's cursor on screen (so you see where your opponent is hovering)
+
+deck-builder:
+	-Build another file other than properties that contains premade decks for use ingame (properties.cgo will tell whether to use a standard deck or whether player must enter deck select)
 
 chat:
 	-create a chat system for people to post links/communicate while playing the game

@@ -36,18 +36,22 @@ public class CameraScript : MonoBehaviour {
                 if (topCard.tag == "Card") {
                     if (!selected.Contains(topCard)) {
                         List<int> tags = topCard.GetComponent<Tags>().GetTags();
+                        HashSet<TagsManager.Operation> topCardOps = new HashSet<TagsManager.Operation>();
                         foreach (int tag in tags) {
-                            if (selected.Count == 0) operations.UnionWith(tagManager.GetOperations(tag)); //if selected is empty before adding first card
-                            else operations.IntersectWith(tagManager.GetOperations(tag));
+                            topCardOps.UnionWith(tagManager.GetOperations(tag));
                         }
+                        if (selected.Count == 0) operations.UnionWith(topCardOps); //if selected is empty before adding first card
+                        else operations.IntersectWith(topCardOps);
+
                         selected.Add(topCard);
                         topCard.GetComponent<Highlighting>().Select();
                         table.updateSortingOrder(topCard);
                     }
                 }
                 else if (topCard.tag == "Background") {
-                    List<string> tags = new List<string>(); tags.Add("card");
-                    table.addCard(new Vector2(mousePos.x, mousePos.y), tags);
+                    List<string> tags = new List<string>() { "card" };
+                    KeyValuePair<string, Newtonsoft.Json.Linq.JToken> piece = new KeyValuePair<string, Newtonsoft.Json.Linq.JToken>();
+                    table.addCard(new Vector2(mousePos.x, mousePos.y), tags, piece);
                 }
             }
         }

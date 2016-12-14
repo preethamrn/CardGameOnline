@@ -74,16 +74,29 @@ public class TagsManager : MonoBehaviour {
 		AddOperationToTag(f, lable, GetIdOfTag(tag));
 	}
 
+
+    //TODO: add default tags like "card" and "deck" with the default operations
 	void Start () {
-		//remove code from here eventually
-		//example setup for a new tag
+        //tag: CARD operations
 		NewTagTemplate("card");
-		//Build functions to make these functions easier
+
 		Func<List<GameObject>, int> deleteFunction = (List<GameObject> o) => {
             foreach (GameObject obj in o) obj.GetComponent<OperationsComponent>().DeleteThis();
             FindObjectOfType<CameraScript>().DestroyContentPanel(); ///DEBUGGING: This should be added to every action??
-            return 1; };
-		AddOperationToTag(deleteFunction, "Delete this card", "card"); //DEBUGGING: temporary testing. Have the operation and tags stored in the properties.cgo file
+            return 0;
+        };
+		AddOperationToTag(deleteFunction, "Delete card(s)", "card"); //DEBUGGING: temporary testing. Have the operation and tags stored in the properties.cgo file
+
+        //tag: DECK operations
+        NewTagTemplate("deck");
+
+        Func<List<GameObject>, int> drawFunction = (List<GameObject> o) => {
+            if (o.Count != 1) return 1;
+            o[0].GetComponent<Properties>().drawCard();
+            return 0;
+        };
+        AddOperationToTag(drawFunction, "Draw card", "deck");
+
 	}
 
 

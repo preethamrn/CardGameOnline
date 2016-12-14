@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
 
 public class TableScript : MonoBehaviour {
 
@@ -53,7 +54,7 @@ public class TableScript : MonoBehaviour {
         card.GetComponent<SpriteRenderer>().sortingOrder = (cardSortingOrder = (cardSortingOrder + 1) % 32768);
     }
 
-    public void addCard(Vector2 pos, List<string> tags, Sprite sprite = null)
+    public void addCard(Vector2 pos, List<string> tags, KeyValuePair<string, JToken> piece)
     {
         GameObject newCard = (GameObject)Instantiate(Resources.Load("card"), new Vector3(pos.x, pos.y, -3.0f), Quaternion.identity);
 
@@ -64,6 +65,6 @@ public class TableScript : MonoBehaviour {
             tagsManager.AddTagToCard(tag, newCard);
         }
 
-        if (sprite != null) spriteRenderer.sprite = sprite;
+        newCard.GetComponent<Properties>().LoadCard(piece);
     }
 }

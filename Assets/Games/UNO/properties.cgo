@@ -2,21 +2,20 @@
 	"red_cards": {
 		"type": "deck",
 		"cards": ["0r_1.png", "1r_1.png"],
-		"back": "back.png",
-		"size": 10
+		"texture": "back.png",
+		"scale": 1
 	},
 
 	"yellow_cards": {
 		"type": "deck",
-		"cards": ["draw2y_1.png"],
-		"back": "back.png",
-		"size": 10
+		"cards": ["draw2y_1.png","draw2y_1.png","draw2y_1.png","draw2y_1.png"],
+		"texture": "back.png",
+		"scale": 1
 	},
 
 	"wild_cards": {
-		"type": "deck",
-		"cards": ["draw4_1.png"],
-		"back": "back.png",
-		"size": 10
+		"type": "card",
+		"texture": "draw4_1.png",
+		"scale": 2
 	}
 }
