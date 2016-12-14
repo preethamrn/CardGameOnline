@@ -95,9 +95,16 @@ public class TagsManager : MonoBehaviour {
             o[0].GetComponent<Properties>().drawCard();
             return 0;
         };
+        Func<List<GameObject>, int> deckSize = (List<GameObject> o) => {
+            if (o.Count != 1) return 1;
+            Debug.Log(o[0].GetComponent<Properties>().deckSize());
+            return 0;
+        };
         AddOperationToTag(drawFunction, "Draw card", "deck");
+        AddOperationToTag(deckSize, "Print deck size", "deck");
+        AddOperationToTag(deleteFunction, "Delete deck(s)", "deck");
 
-	}
+    }
 
 
 	/* Move to seperate class

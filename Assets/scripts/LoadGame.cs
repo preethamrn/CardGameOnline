@@ -16,6 +16,7 @@ public class LoadGame : MonoBehaviour {
         textures = new Dictionary<string, Texture2D>();
 
         string path = ApplicationModel.gameDir;
+        pathPreFix += path;
         
         string json = System.IO.File.ReadAllText(path + @"\properties.cgo");
         JObject pieces = JObject.Parse(json);
@@ -28,22 +29,21 @@ public class LoadGame : MonoBehaviour {
         }
     }
 
-    private IEnumerator LoadImage(string tstring) {
-            string pathTemp = pathPreFix + tstring;
+    public IEnumerator SetSprite(GameObject go, string tstring, float scale) {
+        Texture2D texTmp;
+        if (!textures.ContainsKey(tstring)) {
+            string pathTemp = pathPreFix + @"\" + tstring;
+            Debug.Log(pathTemp);
             WWW www = new WWW(pathTemp);
             yield return www;
-            Texture2D texTmp = new Texture2D(1024, 1024, TextureFormat.DXT1, false);
+            texTmp = new Texture2D(1024, 1024, TextureFormat.DXT1, false);
             www.LoadImageIntoTexture(texTmp);
             textures[tstring] = texTmp;
-            //table.addCard(Vector2.zero, new List<string>(), Sprite.Create(texTmp, new Rect(0,0,texTmp.width,texTmp.height), new Vector2(0.5f, 0.5f)));
-    }
-
-    public Texture2D GetTexture(string s) {
-        if (!textures.ContainsKey(s)) {
-            StartCoroutine(LoadImage(s));
+        } else {
+            texTmp = textures[tstring];
         }
-        return null;
-        //return textures[s];
+        Debug.Log(texTmp);
+        go.GetComponent<SpriteRenderer>().sprite = Sprite.Create(texTmp, new Rect(0, 0, texTmp.width, texTmp.height), new Vector2(0.5f, 0.5f));
     }
     
 }
