@@ -42,8 +42,9 @@ public class LoadGame : MonoBehaviour {
         } else {
             texTmp = textures[tstring];
         }
-        Debug.Log(texTmp);
+
         go.GetComponent<SpriteRenderer>().sprite = Sprite.Create(texTmp, new Rect(0, 0, texTmp.width, texTmp.height), new Vector2(0.5f, 0.5f));
+        go.transform.localScale = new Vector3(scale/2, scale/2, scale/2);
     }
     
 }
