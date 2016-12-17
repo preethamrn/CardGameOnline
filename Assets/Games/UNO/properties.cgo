@@ -16,6 +16,7 @@
 	"wild_cards": {
 		"type": "card",
 		"texture": "draw4_1.png",
+		"back": "back.png",
 		"scale": 2
 	}
 }

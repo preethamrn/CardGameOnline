@@ -80,12 +80,24 @@ public class TagsManager : MonoBehaviour {
         //tag: CARD operations
 		NewTagTemplate("card");
 
-		Func<List<GameObject>, int> deleteFunction = (List<GameObject> o) => {
+        Func<List<GameObject>, int> deleteFunction = (List<GameObject> o) => {
             foreach (GameObject obj in o) obj.GetComponent<OperationsComponent>().DeleteThis();
             FindObjectOfType<CameraScript>().DestroyContentPanel(); ///DEBUGGING: This should be added to every action??
             return 0;
         };
-		AddOperationToTag(deleteFunction, "Delete card(s)", "card"); //DEBUGGING: temporary testing. Have the operation and tags stored in the properties.cgo file
+        Func<List<GameObject>, int> flipCardFunction = (List<GameObject> o) => {
+            foreach (GameObject obj in o) obj.GetComponent<Properties>().flipCard();
+            FindObjectOfType<CameraScript>().DestroyContentPanel(); ///DEBUGGING: This should be added to every action??
+            return 0;
+        };
+        Func<List<GameObject>, int> getPieceFunction = (List<GameObject> o) => {
+            foreach (GameObject obj in o) Debug.Log(obj.GetComponent<Properties>().getPiece());
+            FindObjectOfType<CameraScript>().DestroyContentPanel(); ///DEBUGGING: This should be added to every action??
+            return 0;
+        };
+        AddOperationToTag(flipCardFunction, "Flip card(s)", "card");
+        AddOperationToTag(getPieceFunction, "Print JSON(s)", "card");
+        AddOperationToTag(deleteFunction, "Delete card(s)", "card"); //DEBUGGING: temporary testing. Have the operation and tags stored in the properties.cgo file
 
         //tag: DECK operations
         NewTagTemplate("deck");
@@ -102,6 +114,7 @@ public class TagsManager : MonoBehaviour {
         };
         AddOperationToTag(drawFunction, "Draw card", "deck");
         AddOperationToTag(deckSize, "Print deck size", "deck");
+        AddOperationToTag(getPieceFunction, "Print JSON(s)", "deck");
         AddOperationToTag(deleteFunction, "Delete deck(s)", "deck");
 
     }

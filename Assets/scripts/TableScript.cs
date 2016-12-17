@@ -56,7 +56,7 @@ public class TableScript : MonoBehaviour {
 
     public void addCard(Vector2 pos, List<string> tags, KeyValuePair<string, JToken> piece)
     {
-        GameObject newCard = (GameObject)Instantiate(Resources.Load("card"), new Vector3(pos.x, pos.y, -3.0f), Quaternion.identity);
+        GameObject newCard = (GameObject)Instantiate(Resources.Load("card"), new Vector3(pos.x, pos.y, -1.0f), Quaternion.identity);
 
         SpriteRenderer spriteRenderer = newCard.GetComponent<SpriteRenderer>();
         spriteRenderer.sortingOrder = cardSortingOrder++;

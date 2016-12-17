@@ -19,7 +19,7 @@ public class Properties : MonoBehaviour {
         if(cards_json != null) cards = cards_json.ToObject<Queue<string>>(); //DEBUGGING: error?
         else cards = new Queue<string>();
 
-        float scale = ((float)piece.Value["scale"]);
+        float scale = (float) (piece.Value["scale"] != null ? piece.Value["scale"] : 1);
         StartCoroutine(FindObjectOfType<LoadGame>().SetSprite(this.gameObject, (string)piece.Value["texture"], scale));
         
         //load the tags, list of cards, sprite textures, etc... based on the properties that this card is loaded with
@@ -35,10 +35,23 @@ public class Properties : MonoBehaviour {
         string cardName = cards.Dequeue();
         KeyValuePair<string, JToken> newPiece = new KeyValuePair<string, JToken>(piece.Key, piece.Value.DeepClone());
         newPiece.Value["texture"] = cardName;
+        newPiece.Value["type"] = "card";
         newPiece.Value["cards"].Parent.Remove();
+        newPiece.Value["back"] = piece.Value["texture"];
 
         List<string> tags = new List<string>() { "card" }; //DEBUGGING: TEMP: should inherit deck tags as well
         FindObjectOfType<TableScript>().addCard(new Vector2(transform.position.x+1, transform.position.y+1), tags, newPiece);
+        
+    }
+
+    public void flipCard() {
+        if (piece.Value["back"] != null) {
+            float scale = (float)(piece.Value["scale"] != null ? piece.Value["scale"] : 1);
+            StartCoroutine(FindObjectOfType<LoadGame>().SetSprite(this.gameObject, (string)piece.Value["back"], scale));
+            string back = (string) piece.Value["texture"];
+            piece.Value["texture"] = piece.Value["back"];
+            piece.Value["back"] = back;
+        }
     }
     
 
@@ -48,5 +61,8 @@ public class Properties : MonoBehaviour {
     public int deckSize() {
         return cards.Count;
     }
-    
+    public KeyValuePair<string, JToken> getPiece() {
+        return piece;
+    }
+
 }

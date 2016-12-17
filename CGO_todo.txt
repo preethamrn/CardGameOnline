@@ -15,11 +15,12 @@ actions-popup:
 	✓show a right click popup
 	BUG: when an object doesn't have tags it doesn't update the operations list (operations list should be empty) //ensure there are tags (even if it's an empty tag) during loadgame validation
 	BUG: to get a single card menu, you need to select card (left click) and right click while holding
+	BUG: deck isn't deleted when it's empty
 	
 base-function:
 	!Add functionality for Decks (draw, shuffle), Cards (turn over)
-	-Add Hand
 	-Networking
+	-Add Hand (private cards/permissions system)
 
 games-list:
 	-Scroll bar in case games exceed screen space (either width or height)
