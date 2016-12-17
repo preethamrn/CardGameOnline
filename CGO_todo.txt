@@ -43,6 +43,7 @@ temp:
 	-Sprites can only be 1024x1024 max because of Texture2D initialization.
 	-ContentPanel will keep growing vertically as number of operations grow (make scrollable list)
 	-When card leaves the frame, it gets snapped back to (0, 0)
+	-Intersection of operations requires the operation names & descriptions to be the same as well (ie, "delete cards" != "delete decks")
 
 networking:
 	-How to connect multiple players (sync all variables (deck list<cards>, tags), ensure the properties.cgo file is exactly the same (hash validation with host))
