@@ -1,22 +1,18 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 using System.Collections;
 using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 
-public class TableScript : MonoBehaviour {
+public class TableScript : NetworkBehaviour {
 
     TagsManager tagsManager;
 
     // Use this for initialization
-    void Start () {
+    public override void OnStartServer () {
         tagsManager = FindObjectOfType<TagsManager>();
     }
-
-    // Update is called once per frame
-    void Update () {
-	
-	}
-
+    
     private RaycastHit2D[] hits = new RaycastHit2D[100];
     private int cardSortingOrder = 0;
 
@@ -66,5 +62,6 @@ public class TableScript : MonoBehaviour {
         }
 
         newCard.GetComponent<Properties>().LoadCard(piece);
+        NetworkServer.Spawn(newCard);
     }
 }

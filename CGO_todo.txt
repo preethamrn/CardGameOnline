@@ -46,10 +46,10 @@ temp:
 	-Intersection of operations requires the operation names & descriptions to be the same as well (ie, "delete cards" != "delete decks")
 
 networking:
-	-How to connect multiple players (sync all variables (deck list<cards>, tags), ensure the properties.cgo file is exactly the same (hash validation with host))
 	-Sync all card movements
-	-Separate card visibilities & operations (based on permission system) for each player
 	-Show every player's cursor on screen (so you see where your opponent is hovering)
+	-Separate card visibilities & operations (based on permission system) for each player
+	-How to connect multiple players (sync all variables (deck list<cards>, tags), ensure the properties.cgo file is exactly the same (hash validation with host))
 
 deck-builder:
 	-Build another file other than properties that contains premade decks for use ingame (properties.cgo will tell whether to use a standard deck or whether player must enter deck select)

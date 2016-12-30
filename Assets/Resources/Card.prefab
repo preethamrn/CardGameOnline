@@ -25,6 +25,8 @@ GameObject:
   - 114: {fileID: 114000011476975396}
   - 114: {fileID: 114000013145099952}
   - 114: {fileID: 114000011808722368}
+  - 114: {fileID: 114000012233040716}
+  - 114: {fileID: 114000014267337574}
   m_Layer: 0
   m_Name: Card
   m_TagString: Card
@@ -39,7 +41,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010489614714}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalPosition: {x: 5, y: 0, z: -1}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -92,6 +94,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5104cbf224b74814fa18e660b7421e54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114000012233040716
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010489614714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 126
+    i1: 143
+    i2: 191
+    i3: 248
+    i4: 204
+    i5: 190
+    i6: 187
+    i7: 132
+    i8: 138
+    i9: 71
+    i10: 251
+    i11: 94
+    i12: 114
+    i13: 7
+    i14: 234
+    i15: 142
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114000013145099952
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -103,6 +137,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81699835881bb59409b48bbfa5af16b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114000014267337574
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010489614714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 1
+  m_SendInterval: 0.05
+  m_SyncRotationAxis: 3
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
 --- !u!212 &212000014204231156
 SpriteRenderer:
   m_ObjectHideFlags: 1

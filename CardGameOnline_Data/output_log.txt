@@ -1,0 +1,144 @@
+Initialize engine version: 5.4.2f2 (b7e030c65c9b)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 860M (ID=0x1392)
+    Vendor:   NVIDIA
+    VRAM:     3072 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: E:\Games\CardGameOnline\CardGameOnline_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading E:\Games\CardGameOnline\CardGameOnline_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: E:\Games\CardGameOnline\CardGameOnline_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading E:\Games\CardGameOnline\CardGameOnline_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: E:\Games\CardGameOnline\CardGameOnline_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading E:\Games\CardGameOnline\CardGameOnline_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: E:\Games\CardGameOnline\CardGameOnline_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading E:\Games\CardGameOnline\CardGameOnline_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: E:\Games\CardGameOnline\CardGameOnline_Data\Managed\Unity.Newtonsoft.Json.dll (this message is harmless)
+Loading E:\Games\CardGameOnline\CardGameOnline_Data\Managed\Unity.Newtonsoft.Json.dll into Unity Child Domain
+- Completed reload, in  0.153 seconds
+Platform assembly: E:\Games\CardGameOnline\CardGameOnline_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: E:\Games\CardGameOnline\CardGameOnline_Data\Managed\System.dll (this message is harmless)
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 0.853936 ms
+FileNotFoundException: Could not find file "E:\properties.cgo".
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00000] in <filename unknown>:0 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share) [0x00000] in <filename unknown>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare)
+  at System.IO.File.OpenRead (System.String path) [0x00000] in <filename unknown>:0 
+  at System.IO.StreamReader..ctor (System.String path, System.Text.Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize) [0x00000] in <filename unknown>:0 
+  at System.IO.StreamReader..ctor (System.String path, System.Text.Encoding encoding) [0x00000] in <filename unknown>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamReader:.ctor (string,System.Text.Encoding)
+  at System.IO.File.ReadAllText (System.String path, System.Text.Encoding encoding) [0x00000] in <filename unknown>:0 
+  at System.IO.File.ReadAllText (System.String path) [0x00000] in <filename unknown>:0 
+  at LoadGame.Start () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: ec0 -> priority: 1 
+  Thread -> id: 23b0 -> priority: 1 
+The PlayerPrefab is empty on the NetworkManager. Please setup a PlayerPrefab object.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Background_table (UnityEngine.GameObject)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at Properties.LoadCard (KeyValuePair`2 _piece) [0x00000] in <filename unknown>:0 
+  at TableScript.addCard (Vector2 pos, System.Collections.Generic.List`1 tags, KeyValuePair`2 piece) [0x00000] in <filename unknown>:0 
+  at CameraScript.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Background_table (UnityEngine.GameObject)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at Properties.LoadCard (KeyValuePair`2 _piece) [0x00000] in <filename unknown>:0 
+  at TableScript.addCard (Vector2 pos, System.Collections.Generic.List`1 tags, KeyValuePair`2 piece) [0x00000] in <filename unknown>:0 
+  at CameraScript.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Card(Clone) (UnityEngine.GameObject)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Card(Clone) (UnityEngine.GameObject)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+The PlayerPrefab is empty on the NetworkManager. Please setup a PlayerPrefab object.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Background_table (UnityEngine.GameObject)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at Properties.LoadCard (KeyValuePair`2 _piece) [0x00000] in <filename unknown>:0 
+  at TableScript.addCard (Vector2 pos, System.Collections.Generic.List`1 tags, KeyValuePair`2 piece) [0x00000] in <filename unknown>:0 
+  at CameraScript.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Background_table (UnityEngine.GameObject)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at Properties.LoadCard (KeyValuePair`2 _piece) [0x00000] in <filename unknown>:0 
+  at TableScript.addCard (Vector2 pos, System.Collections.Generic.List`1 tags, KeyValuePair`2 piece) [0x00000] in <filename unknown>:0 
+  at CameraScript.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Background_table (UnityEngine.GameObject)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at Properties.LoadCard (KeyValuePair`2 _piece) [0x00000] in <filename unknown>:0 
+  at TableScript.addCard (Vector2 pos, System.Collections.Generic.List`1 tags, KeyValuePair`2 piece) [0x00000] in <filename unknown>:0 
+  at CameraScript.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Card(Clone) (UnityEngine.GameObject)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Background_table (UnityEngine.GameObject)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at Properties.LoadCard (KeyValuePair`2 _piece) [0x00000] in <filename unknown>:0 
+  at TableScript.addCard (Vector2 pos, System.Collections.Generic.List`1 tags, KeyValuePair`2 piece) [0x00000] in <filename unknown>:0 
+  at CameraScript.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Card(Clone) (UnityEngine.GameObject)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Background_table (UnityEngine.GameObject)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at Properties.LoadCard (KeyValuePair`2 _piece) [0x00000] in <filename unknown>:0 
+  at TableScript.addCard (Vector2 pos, System.Collections.Generic.List`1 tags, KeyValuePair`2 piece) [0x00000] in <filename unknown>:0 
+  at CameraScript.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
