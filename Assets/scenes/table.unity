@@ -135,7 +135,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 11317845}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3976fedb02e871a4f9994c246e9c26b7, type: 3}
+  m_Script: {fileID: 11500000, guid: d3f7db72ab25ed1488a8ef7c5ed325a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   contentPanel: {fileID: 11498782, guid: e4f61acd2b90b2c4bb20e1b9e7506e0a, type: 2}
@@ -476,6 +476,7 @@ GameObject:
   - 114: {fileID: 1420437081}
   - 114: {fileID: 1420437087}
   - 114: {fileID: 1420437088}
+  - 114: {fileID: 1420437089}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -585,6 +586,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sampleButton: {fileID: 11443732, guid: a9887b90d3fa2dd4999278ad5847104e, type: 2}
+--- !u!114 &1420437089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1420437080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81606c3f506070c4791076c4dd53d3d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1687896625
 GameObject:
   m_ObjectHideFlags: 0

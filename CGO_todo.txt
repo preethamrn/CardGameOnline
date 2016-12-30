@@ -1,4 +1,4 @@
-TODO:
+﻿TODO:
 
 drag-n-drop: 
 	✓Make cards 2D
@@ -16,6 +16,7 @@ actions-popup:
 	BUG: when an object doesn't have tags it doesn't update the operations list (operations list should be empty) //ensure there are tags (even if it's an empty tag) during loadgame validation
 	BUG: to get a single card menu, you need to select card (left click) and right click while holding
 	BUG: deck isn't deleted when it's empty
+	BUG: if there's an error in the popup (like network issues) then every popup after that only shows "Close"
 	
 base-function:
 	!Add functionality for Decks (draw, shuffle), Cards (turn over)
@@ -46,10 +47,11 @@ temp:
 	-Intersection of operations requires the operation names & descriptions to be the same as well (ie, "delete cards" != "delete decks")
 
 networking:
-	-How to connect multiple players (sync all variables (deck list<cards>, tags), ensure the properties.cgo file is exactly the same (hash validation with host))
-	-Sync all card movements
+	-Sync all card movements (BUG: card can only be moved by owner. when owner disconnects, all cards disappear (maybe good because already implements permissions system for us))
 	-Separate card visibilities & operations (based on permission system) for each player
 	-Show every player's cursor on screen (so you see where your opponent is hovering)
+	-Lobby system for server selection, game selection, and deck building.
+	-How to connect multiple players (sync all variables (deck list<cards>, tags), ensure the properties.cgo file is exactly the same (hash validation with host))
 
 deck-builder:
 	-Build another file other than properties that contains premade decks for use ingame (properties.cgo will tell whether to use a standard deck or whether player must enter deck select)
