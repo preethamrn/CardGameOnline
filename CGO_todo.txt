@@ -7,6 +7,7 @@ drag-n-drop:
 	✓Raycast hits should account for sorting order
 	✓Card goes off screen (limit Card movement to screen)
 	✓Don't snap center of card to pointer when clicked.
+	-Alt + hover => show full card (make sure the hover doesn't block the cursor and isn't a clickable card)
 	-Solid border around card when hover/click/in_hand/on_table/etc...
 	-Fix sorting order overflow issue (when > 32767 bring card to front stops working)
 
@@ -19,8 +20,8 @@ actions-popup:
 	BUG: if there's an error in the popup (like network issues) then every popup after that only shows "Close"
 	
 base-function:
-	!Add functionality for Decks (draw, shuffle), Cards (turn over)
-	-Networking
+	✓Add functionality for Decks (draw, shuffle), Cards (turn over)
+	!Networking
 	-Add Hand (private cards/permissions system)
 
 games-list:
@@ -48,6 +49,10 @@ temp:
 
 networking:
 	-Sync all card movements (BUG: card can only be moved by owner. when owner disconnects, all cards disappear (maybe good because already implements permissions system for us))
+	-Disallow opponents to select click/select your card and change sorting order (only allow reqesting permission)
+	-Send an RPC when card is clicked so sorting order/sprite can be changed.
+	-drag-n-drop: hover show full card
+	-Sync card/deck properties as well (and RPC whenever an action is called)
 	-Separate card visibilities & operations (based on permission system) for each player
 	-Show every player's cursor on screen (so you see where your opponent is hovering)
 	-Lobby system for server selection, game selection, and deck building.
